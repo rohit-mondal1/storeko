@@ -100,10 +100,10 @@ const Header = () => {
             <ul className="menu bg-base-100 w-56 shadow shadow-2xl">
               
               <li>
-                <Link>My Profile</Link>
+                <Link to='/myProfile'>My Profile</Link>
               </li>
               <li>
-                <Link>Albums</Link>
+                <Link to='/albums'>Albums</Link>
               </li>
               <li>
                 <Link>Log Out</Link>

@@ -1,5 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
+import Albums from "../../page/Dynamic/Albums/Albums";
 import Home from "../../page/Dynamic/Home/Home";
+import MyProfile from "../../page/Dynamic/MyProfile/MyProfile";
 import ProAccound from "../../page/Dynamic/ProAccound/ProAccound";
 import Login from "../Auth/Login";
 import SignUp from "../Auth/SignUp";
@@ -12,7 +14,7 @@ export const router = createBrowserRouter([
         {path:'/login' , element: <Login/>},
         {path:'/signup' , element: <SignUp/>},
         {path:'/Profile-update' , element: <ProAccound/>},
-        {path:'/' , element: <Home/>},
-        {path:'/' , element: <Home/>},
+        {path:'/myProfile' , element: <MyProfile/>},
+        {path:'/albums' , element: <Albums/>},
     ])}
 ])
