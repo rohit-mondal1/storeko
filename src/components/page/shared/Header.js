@@ -1,23 +1,32 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import {  Link } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { FaUpload } from "react-icons/fa";
 
 const Header = () => {
   return (
-    <div className="navbar  p-4 rounded-xl bg-white   shadow-lg ">
+    <div className="navbar  p-4  bg-white text-black   shadow-lg ">
       <div className="navbar-start">
         <Link to="/" className="btn btn-ghost normal-case text-xl">
           {/* <img src="https://i.ibb.co/FmHgBT1/eteacher-removebg-preview.png"  className="bg-white w-12 rounded-full" alt="" /> */}
-          <h1
-            className="text-3xl font-bold text-blue-700
-          "
-          >
-            CARRY
-          </h1>
+          <h1 className="text-3xl font-bold text-blue-700">StoreKo</h1>
         </Link>
       </div>
+      {/* about */}
+      <div className="navbar-end hidden lg:flex">
+        <ul className="menu menu-horizontal p-0 text-xl font-semibold ">
+        <li>
+            <Link to="/home">
+              <span>
+                <FaUpload />
+              </span>{" "}
+              Uplode
+            </Link>
+          </li>
+        </ul>
+      </div>
 
-      {/* responive manu  */}
+      {/* responsive menu  */}
 
       <div className="navbar-end gap-4">
         <div className="dropdown dropdown-end">
@@ -29,29 +38,85 @@ const Header = () => {
             className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <NavLink to="/home">Home</NavLink>
+              <Link to="/home">Home</Link>
             </li>
-
-           
-
             <li>
               <button>LogI Out</button>
             </li>
-
-            
           </ul>
         </div>
       </div>
       {/* lg  */}
       <div className="navbar-end hidden lg:flex">
-        <ul className="menu menu-horizontal p-0 text-xl font-semibold text-blue-800">
-          <li>
-            <NavLink to="/home">Home</NavLink>
-          </li>
-          <li>
-            <button>LogI Out</button>
+        <ul className="menu menu-horizontal p-0 text-xl font-semibold ">
+        <li tabIndex={0}>
+            <Link>
+              About
+              <svg
+                className="fill-current"
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+              >
+                <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
+              </svg>
+            </Link>
+            <ul className="menu bg-base-100 w-56 shadow shadow-xl">
+              <li>
+                <Link>Submenu 1</Link>
+              </li>
+              <li>
+                <Link>Submenu 2</Link>
+              </li>
+            </ul>
           </li>
 
+          {/*  */}
+
+          <li tabIndex={0}>
+            <Link>
+            <span>
+                <div className="avatar">
+                  <div className="w-8 rounded">
+                    <img
+                      src="https://i.ibb.co/QnVhN1m/IMG20220618211638.jpg"
+                      alt="Tailwind-CSS-Avatar-component"
+                    />
+                  </div>
+                </div>
+              </span>
+              rohit
+              <svg
+                className="fill-current"
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+              >
+                <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
+              </svg>
+            </Link>
+            <ul className="menu bg-base-100 w-56 shadow shadow-2xl">
+              
+              <li>
+                <Link>My Profile</Link>
+              </li>
+              <li>
+                <Link>Albums</Link>
+              </li>
+              <li>
+                <Link>Log Out</Link>
+              </li>
+            </ul>
+          </li>
+          
+          
+          <li >
+            <Link to='/Profile-update'>
+            <button>Upgrade</button>                     
+            </Link>
+          </li>
         </ul>
       </div>
     </div>
