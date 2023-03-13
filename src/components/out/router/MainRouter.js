@@ -4,6 +4,7 @@ import ApiKeys from "../../page/Dynamic/ApiKeys/ApiKeys";
 import Home from "../../page/Dynamic/Home/Home";
 import MyProfile from "../../page/Dynamic/MyProfile/MyProfile";
 import ProAccound from "../../page/Dynamic/ProAccound/ProAccound";
+import UplodeImage from "../../page/Dynamic/UplodeImage/UplodeImage";
 import Login from "../Auth/Login";
 import SignUp from "../Auth/SignUp";
 import MainLayout from "../layout/MainLayout";
@@ -18,5 +19,6 @@ export const router = createBrowserRouter([
         {path:'/myProfile' , element: <MyProfile/>},
         {path:'/albums' , element: <Albums/>},
         {path:'/api-keys' , element: <ApiKeys/>},
+        {path:'/uplde-image' , element: <UplodeImage/>},
     ])}
 ])

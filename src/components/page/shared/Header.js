@@ -16,11 +16,11 @@ const Header = () => {
       <div className="navbar-end hidden lg:flex">
         <ul className="menu menu-horizontal p-0 text-xl font-semibold ">
           <li>
-            <Link to="/home">
+            <Link to="/uplde-image">
               <span>
                 <FaUpload />
-              </span>{" "}
-              Uplode
+              </span>
+              Uploaded
             </Link>
           </li>
         </ul>
