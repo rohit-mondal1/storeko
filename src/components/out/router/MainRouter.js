@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Albums from "../../page/Dynamic/Albums/Albums";
+import ApiKeys from "../../page/Dynamic/ApiKeys/ApiKeys";
 import Home from "../../page/Dynamic/Home/Home";
 import MyProfile from "../../page/Dynamic/MyProfile/MyProfile";
 import ProAccound from "../../page/Dynamic/ProAccound/ProAccound";
@@ -16,5 +17,6 @@ export const router = createBrowserRouter([
         {path:'/Profile-update' , element: <ProAccound/>},
         {path:'/myProfile' , element: <MyProfile/>},
         {path:'/albums' , element: <Albums/>},
+        {path:'/api-keys' , element: <ApiKeys/>},
     ])}
 ])

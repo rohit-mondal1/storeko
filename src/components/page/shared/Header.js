@@ -15,7 +15,7 @@ const Header = () => {
       {/* about */}
       <div className="navbar-end hidden lg:flex">
         <ul className="menu menu-horizontal p-0 text-xl font-semibold ">
-        <li>
+          <li>
             <Link to="/home">
               <span>
                 <FaUpload />
@@ -49,7 +49,7 @@ const Header = () => {
       {/* lg  */}
       <div className="navbar-end hidden lg:flex">
         <ul className="menu menu-horizontal p-0 text-xl font-semibold ">
-        <li tabIndex={0}>
+          <li tabIndex={0}>
             <Link>
               About
               <svg
@@ -62,12 +62,9 @@ const Header = () => {
                 <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
               </svg>
             </Link>
-            <ul className="menu bg-base-100 w-56 shadow shadow-xl">
+            <ul className="menu bg-base-100 w-56  shadow-xl">
               <li>
-                <Link>Submenu 1</Link>
-              </li>
-              <li>
-                <Link>Submenu 2</Link>
+                <Link to='/api-keys'>API Keys</Link>
               </li>
             </ul>
           </li>
@@ -76,7 +73,7 @@ const Header = () => {
 
           <li tabIndex={0}>
             <Link>
-            <span>
+              <span>
                 <div className="avatar">
                   <div className="w-8 rounded">
                     <img
@@ -97,24 +94,22 @@ const Header = () => {
                 <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
               </svg>
             </Link>
-            <ul className="menu bg-base-100 w-56 shadow shadow-2xl">
-              
+            <ul className="menu bg-base-100 w-56  shadow-2xl">
               <li>
-                <Link to='/myProfile'>My Profile</Link>
+                <Link to="/myProfile">My Profile</Link>
               </li>
               <li>
-                <Link to='/albums'>Albums</Link>
+                <Link to="/albums">Albums</Link>
               </li>
               <li>
                 <Link>Log Out</Link>
               </li>
             </ul>
           </li>
-          
-          
-          <li >
-            <Link to='/Profile-update'>
-            <button>Upgrade</button>                     
+
+          <li>
+            <Link to="/Profile-update">
+              <button>Upgrade</button>
             </Link>
           </li>
         </ul>
