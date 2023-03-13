@@ -3,6 +3,7 @@ import { BsArrowDownSquareFill } from "react-icons/bs";
 import { MdDelete } from "react-icons/md";
 import { AiOutlineLink } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import { toast } from "react-hot-toast";
 
 const AllImages = () => {
   const url ='https://source.unsplash.com/random/300x300/?1'
@@ -37,7 +38,8 @@ const AllImages = () => {
               <BsArrowDownSquareFill />
             </button>
             <Link className="text-3xl" onClick={()=>{
-            navigator.clipboard.writeText(url)
+            navigator.clipboard.writeText(url);
+            return toast.success('Copy Link')
         }}>
               
               <AiOutlineLink />
