@@ -11,7 +11,7 @@ const provider = new GoogleAuthProvider()
 
 
 const UserContext = ({ children }) => {
-  const [user, setUser] = useState(null);
+  
   const [loder, setLoder] = useState(true);
   const state = useSelector(state => state);
     const dispatch = useDispatch()
@@ -42,14 +42,14 @@ const UserContext = ({ children }) => {
   useEffect(()=>{
     const unsubscribe = onAuthStateChanged(auth , creatures =>{
       setLoder(false)
-      userpayloade(creatures)
+      dispatch(userpayloade(creatures)) 
     })
     return ()=>{
       unsubscribe()
   }
-  },[])
+  },[dispatch])
 
-  const authInfo = { user, loder ,signup , logIn ,loginGoogle ,logOut };
+  const authInfo = { loder ,signup , logIn ,loginGoogle ,logOut };
   return (
     <div>
       <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>

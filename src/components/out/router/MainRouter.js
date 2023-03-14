@@ -3,14 +3,16 @@ import Albums from "../../page/Dynamic/Albums/Albums";
 import ApiKeys from "../../page/Dynamic/ApiKeys/ApiKeys";
 import Home from "../../page/Dynamic/Home/Home";
 import MyProfile from "../../page/Dynamic/MyProfile/MyProfile";
+import UpdateProfile from "../../page/Dynamic/MyProfile/UpdateProfile";
 import ProAccound from "../../page/Dynamic/ProAccound/ProAccound";
 import UplodeImage from "../../page/Dynamic/UplodeImage/UplodeImage";
 import Login from "../Auth/Login";
 import SignUp from "../Auth/SignUp";
 import MainLayout from "../layout/MainLayout";
+import PrivateRoute from "./PrivateRoute";
  
 export const router = createBrowserRouter([
-    {path:'/', element:<MainLayout/> , children:([
+    {path:'/', element:<PrivateRoute><MainLayout/></PrivateRoute>  , children:([
         {path:'/' , element: <Home/>},
         {path:'/home' , element: <Home/>},
         {path:'/login' , element: <Login/>},
@@ -20,5 +22,6 @@ export const router = createBrowserRouter([
         {path:'/albums' , element: <Albums/>},
         {path:'/api-keys' , element: <ApiKeys/>},
         {path:'/uplde-image' , element: <UplodeImage/>},
+        {path:'/updateProfile' , element: <UpdateProfile/>},
     ])}
 ])

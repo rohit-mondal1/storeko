@@ -1,14 +1,17 @@
 import React from 'react';
 import { AiOutlineEdit } from "react-icons/ai";
+import { Link } from 'react-router-dom';
 
 const MyProfile = () => {
   return (
     <div>
       <div className="flex flex-col mx-auto my-8 justify-center max-w-sm p-6 shadow-md rounded-xl sm:px-12 bg-gray-900 text-gray-100">
         <div className="text-left ">
+          <Link to='/updateProfile'>
           <span className="text-pink-700 t text-2xl left-0 flex justify-end items-center">
             <AiOutlineEdit /> Edit
           </span>
+          </Link>
         </div>
         <img
           src="https://source.unsplash.com/150x150/?portrait?3"

@@ -9,6 +9,7 @@ const userAction =(state =inisatulState , action)=>{
     switch(action.type){
         case user:
         return{
+            ...state,
              user : action.payload
         }
 

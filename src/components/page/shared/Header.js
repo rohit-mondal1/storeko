@@ -1,9 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import {  Link } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { FaUpload } from "react-icons/fa";
+import { AuthContext } from "../../out/context/UserContext";
+import { toast } from "react-hot-toast";
 
 const Header = () => {
+  const {logOut} = useContext(AuthContext)
+
+
+
+  const handelLogout= ()=>{
+    logOut()
+    return toast.success('Log out Success Full');
+  }
   return (
     <div className="navbar  p-4  bg-white text-black   shadow-lg ">
       <div className="navbar-start">
@@ -41,7 +51,7 @@ const Header = () => {
               <Link to="/home">Home</Link>
             </li>
             <li>
-              <button>LogI Out</button>
+              <button onClick={handelLogout}>LogI Out</button>
             </li>
           </ul>
         </div>
