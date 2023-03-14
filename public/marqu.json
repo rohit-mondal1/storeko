@@ -1,0 +1,8 @@
+[
+  { "name": "Google", "image": "https://i.ibb.co/YDQXRqT/google.png", "link": "https://www.google.com/" },
+  { "name": "image optician", "image": "https://i.ibb.co/QFjwFK6/img.jpg", "link": "https://tinypng.com/" },
+  { "name": "Amazon", "image": "https://i.ibb.co/4gwDRJr/amazon.png", "link": "https://www.amazon.in/ref=nav_logo" },
+  { "name": "Flipkart", "image": "https://i.ibb.co/KzjWYhz/Flipkart.png", "link": "https://www.flipkart.com/" },
+  { "name": "openai", "image": "https://i.ibb.co/p4bfgr6/openai.jpg", "link": "https://chat.openai.com/chat" },
+  { "name": "canva", "image": "https://i.ibb.co/gSSCR8D/canva.jpg", "link": "https://www.canva.com/" }
+]
