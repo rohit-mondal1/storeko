@@ -1,22 +1,53 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { RiImageAddFill } from "react-icons/ri";
 import { useForm } from "react-hook-form";
+import { AuthContext } from '../context/UserContext';
 
 const SignUp = () => {
+  const {user} =useContext(AuthContext)
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
   } = useForm();
+  const imageHostKey =""
 
   //   fast
-  const onSubmit = (data) => {};
+  const onSubmit = (data) => {
+    const name = data.username;
+    const image = data.image[0];
+    const email = data.email;
+    const password = data.password;
+    const formData = new FormData();
+    formData.append("image", image);
+    fetch(`https://api.imgbb.com/1/upload?key=${imageHostKey}`, {
+      method: "POST",
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((imageData) => {
+        if (imageData.success) {
+          const img = imageData.data.url;
+         const users ={
+          name,
+          email,
+          password,
+          image:img
+         }
+
+         
+          
+          
+        }
+      });
+  };
   return (
     <div className="w-full mx-auto my-5 max-w-md p-8 space-y-3 rounded-xl bg-gray-900 text-gray-100">
       <h1 className="text-2xl font-bold text-center">Sign up</h1>
+      <h1 className="text-2xl font-bold text-center">{user}</h1>
 
       <form
         onSubmit={handleSubmit(onSubmit)}

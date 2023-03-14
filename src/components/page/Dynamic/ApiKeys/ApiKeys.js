@@ -3,8 +3,8 @@ import { toast } from "react-hot-toast";
 
 
 const ApiKeys = () => {
-  const copyText = "df1509eeb08fa7011ab2697f6fe3f944";
-  const copyApi = "df1509eeb08fa7011ab2697f6fe3f944";
+  const copyText = "0a8ef11a7d70acd362278a77fba31d7a";
+  const copyApi = "https://api.imgbb.com/1/upload";
 
   return (
     <div className="text-left lg:w-2/4 my-6 mx-auto">

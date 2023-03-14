@@ -11,7 +11,13 @@ const Home = () => {
         <div>
             home
             <ProAccound/>
+            <div className='my-8 '>
+                <div>
+                    <h1 className='text-3xl font-semibold' >your choice</h1>
+                </div>
+
             <SumCompany/>
+            </div>
         </div>
     );
 };
