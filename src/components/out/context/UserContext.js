@@ -3,6 +3,7 @@ import React, { createContext, useEffect, useState } from "react";
 import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import app from "../Auth/Firebase.config";
 import { useDispatch, useSelector } from "react-redux";
+import { userpayloade } from "../../Redux/PaylodeAction/PaylodeAction";
 
 export const AuthContext = createContext();
 const auth = getAuth(app)
@@ -41,7 +42,7 @@ const UserContext = ({ children }) => {
   useEffect(()=>{
     const unsubscribe = onAuthStateChanged(auth , creatures =>{
       setLoder(false)
-      setUser(creatures)
+      userpayloade(creatures)
     })
     return ()=>{
       unsubscribe()
