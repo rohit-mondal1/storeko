@@ -8,10 +8,10 @@ import store from './components/Redux/Store';
 function App() {
   return (
     <div className="App">
-      <Provider store={store}>
+      
      <RouterProvider router={router}></RouterProvider>
      <Toaster/>
-     </Provider>
+     
     </div>
   );
 }

@@ -4,9 +4,18 @@ import { FcGoogle } from "react-icons/fc";
 import { RiImageAddFill } from "react-icons/ri";
 import { useForm } from "react-hook-form";
 import { AuthContext } from '../context/UserContext';
+import { useDispatch } from 'react-redux';
+import { userpayloade } from '../../Redux/PaylodeAction/PaylodeAction';
+
 
 const SignUp = () => {
+  const dispatch = useDispatch()
+
   const {user} =useContext(AuthContext)
+  function reu(){
+    {userpayloade(true)}
+
+  }
   const {
     register,
     handleSubmit,
@@ -37,7 +46,7 @@ const SignUp = () => {
           password,
           image:img
          }
-
+         reu()
          
           
           
