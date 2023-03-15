@@ -12,16 +12,17 @@ import MainLayout from "../layout/MainLayout";
 import PrivateRoute from "./PrivateRoute";
  
 export const router = createBrowserRouter([
-    {path:'/', element:<PrivateRoute><MainLayout/></PrivateRoute>  , children:([
-        {path:'/' , element: <Home/>},
-        {path:'/home' , element: <Home/>},
-        {path:'/login' , element: <Login/>},
+    {path:'/', element:<MainLayout/>  , children:([
+        {path:'/' , element: <PrivateRoute><Home/></PrivateRoute>},
+        {path:'/home' , element: <PrivateRoute><Home/></PrivateRoute>},
+        
+        {path:'/Profile-update' , element: <PrivateRoute><ProAccound/></PrivateRoute>},
+        {path:'/myProfile' , element: <PrivateRoute><MyProfile/></PrivateRoute>},
+        {path:'/albums' , element: <PrivateRoute><Albums/></PrivateRoute>},
+        {path:'/api-keys' , element: <PrivateRoute><ApiKeys/> </PrivateRoute>},
+        {path:'/uplde-image' , element: <PrivateRoute><UplodeImage/></PrivateRoute>},
+        {path:'/updateProfile' , element: <PrivateRoute><UpdateProfile/></PrivateRoute>},
+    ])},
+    {path:'/login' , element: <Login/>},
         {path:'/signup' , element: <SignUp/>},
-        {path:'/Profile-update' , element: <ProAccound/>},
-        {path:'/myProfile' , element: <MyProfile/>},
-        {path:'/albums' , element: <Albums/>},
-        {path:'/api-keys' , element: <ApiKeys/>},
-        {path:'/uplde-image' , element: <UplodeImage/>},
-        {path:'/updateProfile' , element: <UpdateProfile/>},
-    ])}
 ])

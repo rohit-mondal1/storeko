@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useState } from "react";
 
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword,  signOut } from "firebase/auth";
 import app from "../Auth/Firebase.config";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -53,7 +53,7 @@ const UserContext = ({ children }) => {
       .then((data) => dispatch(GetUserPayload(data)));
   }, [userEmail , dispatch]);
 
-  const authInfo = { loder, signup, logIn, logOut };
+  const authInfo = { loder, signup, logIn, logOut , auth };
   return (
     <div>
       <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>

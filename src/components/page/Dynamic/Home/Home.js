@@ -9,11 +9,11 @@ const Home = () => {
     console.log(state);
     return (
         <div>
-            home
+           
             <ProAccound/>
-            <div className='my-8 '>
+            <div className='my-12 '>
                 <div>
-                    <h1 className='text-3xl font-semibold' >your choice</h1>
+                    <h1 className='text-3xl font-semibold' >Your Choice</h1>
                 </div>
 
             <SumCompany/>

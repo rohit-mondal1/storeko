@@ -1,22 +1,34 @@
-import React from 'react';
-import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import React, { useContext } from "react";
+import { useForm } from "react-hook-form";
+import { toast } from "react-hot-toast";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/UserContext";
 
 const Login = () => {
-    const {
-        register,
-        handleSubmit,
-        watch,
-        formState: { errors },
-      } = useForm();
+  const navigate = useNavigate();
+  const { logIn } = useContext(AuthContext);
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
 
-
-    //   fast 
-    const onSubmit= (data) =>{
-
-    }
-    return (
-        <div className="w-full mx-auto my-5 max-w-md p-8 space-y-3 rounded-xl dark:bg-gray-900 dark:text-gray-100">
+  //   fast
+  const onSubmit = (data) => {
+    const email = data.email;
+    const password = data.password;
+    logIn(email, password)
+      .then((res) => {
+        navigate("/");
+        return toast.success("Login Success Full !!");
+      })
+      .catch((e) => {
+        console.error(e.message);
+      });
+  };
+  return (
+    <div className="w-full mx-auto my-5 max-w-md p-8 space-y-3 rounded-xl dark:bg-gray-900 dark:text-gray-100">
       <h1 className="text-2xl font-bold text-center">Log in</h1>
       <form
         onSubmit={handleSubmit(onSubmit)}
@@ -54,7 +66,7 @@ const Login = () => {
           Sign up
         </button>
       </form>
-      
+
       <p className="text-xs text-center sm:px-6 dark:text-gray-400">
         Don't have an account?
         <Link
@@ -67,7 +79,7 @@ const Login = () => {
         </Link>
       </p>
     </div>
-    );
+  );
 };
 
 export default Login;

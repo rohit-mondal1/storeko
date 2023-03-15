@@ -1,13 +1,15 @@
 import React, { useContext } from "react";
-import {  Link } from "react-router-dom";
+import {  Link, useNavigate } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { FaUpload } from "react-icons/fa";
 import { AuthContext } from "../../out/context/UserContext";
 import { toast } from "react-hot-toast";
 import { useSelector } from "react-redux";
+import { signOut } from "firebase/auth";
 
 const Header = () => {
-  const {logOut} = useContext(AuthContext)
+  const {logOut , auth} = useContext(AuthContext)
+  const navigate = useNavigate()
   const data = useSelector(state => state);
   const image = data?.currentUser?.image
   const name = data?.currentUser?.name
@@ -15,8 +17,14 @@ const Header = () => {
 
 
   const handelLogout= ()=>{
-    logOut().then(()=>{})
-    return toast.success('Log out Success Full');  
+    console.log('object');
+    signOut(auth).then(() => {
+      navigate('/login')
+      return toast.success('Log out Success Full'); 
+    }).catch((error) => {
+      
+    });
+     
   }
   return (
     <div className="navbar  p-4  bg-white text-black   shadow-lg ">
@@ -116,7 +124,7 @@ const Header = () => {
                 <Link to="/albums">Albums</Link>
               </li>
               <li>
-                <Link>Log Out</Link>
+              <button onClick={handelLogout}>LogI Out</button>
               </li>
             </ul>
           </li>
