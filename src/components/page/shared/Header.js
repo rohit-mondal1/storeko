@@ -4,9 +4,13 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { FaUpload } from "react-icons/fa";
 import { AuthContext } from "../../out/context/UserContext";
 import { toast } from "react-hot-toast";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const {logOut} = useContext(AuthContext)
+  const data = useSelector(state => state);
+  const image = data?.currentUser?.image
+  const name = data?.currentUser?.name
 
 
 
@@ -87,13 +91,13 @@ const Header = () => {
                 <div className="avatar">
                   <div className="w-8 rounded">
                     <img
-                      src="https://i.ibb.co/QnVhN1m/IMG20220618211638.jpg"
-                      alt="Tailwind-CSS-Avatar-component"
+                      src={image}
+                      alt="component"
                     />
                   </div>
                 </div>
               </span>
-              rohit
+              {name}
               <svg
                 className="fill-current"
                 xmlns="http://www.w3.org/2000/svg"

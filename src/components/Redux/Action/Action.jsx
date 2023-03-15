@@ -1,7 +1,7 @@
-import { user } from "./ActionType";
+import { GetUser, user } from "./ActionType";
 
 const inisatulState = {
-test:"test"
+
 
 }
 
@@ -11,6 +11,11 @@ const userAction =(state =inisatulState , action)=>{
         return{
             ...state,
              user : action.payload
+        }
+        case GetUser:
+        return{
+            ...state,
+            currentUser : action.payload
         }
 
         default: 

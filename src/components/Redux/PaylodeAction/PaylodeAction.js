@@ -1,8 +1,14 @@
-import { user } from "../Action/ActionType"
+import { GetUser, user } from "../Action/ActionType"
 
-export const userpayloade = data =>{
+export const userPayload = data =>{
     return{
         type: user,
+        payload: data
+    }
+}
+export const GetUserPayload = data =>{
+    return{
+        type: GetUser,
         payload: data
     }
 }
