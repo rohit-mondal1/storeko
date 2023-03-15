@@ -1,5 +1,6 @@
 import React from "react";
 import { AiOutlineEdit } from "react-icons/ai";
+import { Link } from "react-router-dom";
 import AllImages from "./AllImages";
 
 const Albums = () => {
@@ -19,10 +20,12 @@ const Albums = () => {
             <h1 className="text-3xl font-bold">Rohit Mondal</h1>
             {/* <div>Edit</div> */}
             <div className="text-left  my-1">
-          <span className="text-pink-700 t text-2xl left-0 flex justify-end items-center">
-            <AiOutlineEdit /> Edit
-          </span>
-        </div>
+              <Link to="/updateProfile">
+                <span className="text-pink-700 t text-2xl left-0 flex justify-end items-center">
+                  <AiOutlineEdit /> Edit
+                </span>
+              </Link>
+            </div>
             <div className="flex gap-3 mt-3">
               <div className="">
                 <h1>0 FOLLOWING</h1>
@@ -39,14 +42,13 @@ const Albums = () => {
       <div className="mt-16">
         <h1 className="text-2xl my-6">Rohit's Images</h1>
         <div>
-        <section className="py-6 ">
-        <div className="container flex flex-col justify-center p-4 mx-auto">
-          <div className="grid grid-cols-1 relative gap-4 lg:grid-cols-4 sm:grid-cols-2">
-           
-            <AllImages/>
-          </div>
-        </div>
-      </section>
+          <section className="py-6 ">
+            <div className="container flex flex-col justify-center p-4 mx-auto">
+              <div className="grid grid-cols-1 relative gap-4 lg:grid-cols-4 sm:grid-cols-2">
+                <AllImages />
+              </div>
+            </div>
+          </section>
         </div>
       </div>
     </div>

@@ -11,8 +11,8 @@ const Header = () => {
 
 
   const handelLogout= ()=>{
-    logOut()
-    return toast.success('Log out Success Full');
+    logOut().then(()=>{})
+    return toast.success('Log out Success Full');  
   }
   return (
     <div className="navbar  p-4  bg-white text-black   shadow-lg ">

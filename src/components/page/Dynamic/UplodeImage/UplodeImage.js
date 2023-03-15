@@ -9,9 +9,40 @@ const UplodeImage = () => {
     watch,
     formState: { errors },
   } = useForm();
+  const imageHostKey = "0a8ef11a7d70acd362278a77fba31d7a";
+
+
+
   const handleAddProduct = (data) => {
-    const img = data.image[0];
-    console.log(img);
+    const image = data.image[0];
+    
+    const formData = new FormData();
+    formData.append("image", image);
+    fetch(`https://api.imgbb.com/1/upload?key=${imageHostKey}`, {
+      method: "POST",
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((imageData) => {
+        if (imageData.success) {
+          const img = imageData.data.url;
+      
+
+    //       fetch("http://localhost:8000/userPost", {
+    //         method: "POST",
+    //         headers: {
+    //           "content-type": "application/json",
+    //         },
+    //         body: JSON.stringify(usersinfo),
+    //       })
+    //         .then((res) => res.json())
+    //         .then((data) => {
+    //           if (data.acknowledged) {
+    //             return toast.success(" post success full !!");
+    //           }
+    //         });
+        }
+      });
   };
 
   return (
