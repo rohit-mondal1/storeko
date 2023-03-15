@@ -1,14 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { AiOutlineEdit } from "react-icons/ai";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import AllImages from "./AllImages";
 
 const Albums = () => {
-  const data = useSelector(state => state);
-  const image = data?.currentUser?.image;
-  const name = data?.currentUser?.name;
+  const [data , setData] = useState([]);
+  const state = useSelector(state => state);
+  const image = state?.currentUser?.image;
+  const name = state?.currentUser?.name;
+  const userEmail = state?.user?.email;
 
+  useEffect(() => {
+    fetch(`http://localhost:8000/images?email=${userEmail}`)
+      .then((res) => res.json())
+      .then((images) => setData(images));
+  }, [userEmail]);
+  console.log("data",data);
 
 
   return (
@@ -52,7 +60,8 @@ const Albums = () => {
           <section className="py-6 ">
             <div className="container flex flex-col justify-center p-4 mx-auto">
               <div className="grid grid-cols-1 relative gap-4 lg:grid-cols-4 sm:grid-cols-2">
-                <AllImages />
+                {data?.map(p => <AllImages key={p._id} img={p}></AllImages>)}
+                
               </div>
             </div>
           </section>

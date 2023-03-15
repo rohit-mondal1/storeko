@@ -5,43 +5,49 @@ import { AiOutlineLink } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { toast } from "react-hot-toast";
 
-const AllImages = () => {
-  const url ='https://source.unsplash.com/random/300x300/?1'
 
-
-  const handelDownlode=(url)=>{
-    const atag = document.createElement('a')
+const AllImages = ({img}) => {
+  const {image} =img;
+  const url = image;
+  
+  const handelDownlode = (url) => {
+    const atag = document.createElement("a");
     atag.href = url;
-    atag.setAttribute('download' , url);
+    atag.setAttribute("download", url);
     document.body.appendChild(atag);
-    atag.click()
-    atag.remove()
-
-  }
+    atag.click();
+    atag.remove();
+  };
   return (
     <div>
-      <div className="relative">
+      <div className="relative my-2">
         <div>
-         <img
-            className="object-cover w-full bg-gray-500 aspect-square"
-            src="https://source.unsplash.com/random/300x300/?1"
+          <img
+            className="object-cover w-full bg-gray-500 aspect-square border-2"
+            src={url}
             alt=""
-          /> 
-          
+          />
         </div>
         <div className="absolute top-4 right-2">
           <div className=" h-full gap-6 p-1 flex bg-white">
             <Link className="text-3xl ">
               <MdDelete />
             </Link>
-            <button onClick={()=>{handelDownlode(url)}} className="text-3xl  ">
+            <button
+              onClick={() => {
+                handelDownlode(url);
+              }}
+              className="text-3xl  "
+            >
               <BsArrowDownSquareFill />
             </button>
-            <Link className="text-3xl" onClick={()=>{
-            navigator.clipboard.writeText(url);
-            return toast.success('Copy Link')
-        }}>
-              
+            <Link
+              className="text-3xl"
+              onClick={() => {
+                navigator.clipboard.writeText(url);
+                return toast.success("Copy Link");
+              }}
+            >
               <AiOutlineLink />
             </Link>
           </div>
