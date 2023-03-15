@@ -1,23 +1,51 @@
+import { useQuery } from "@tanstack/react-query";
 import React, { useEffect, useState } from "react";
+import { toast } from "react-hot-toast";
 import { AiOutlineEdit } from "react-icons/ai";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import AllImages from "./AllImages";
 
 const Albums = () => {
-  const [data , setData] = useState([]);
+ 
   const state = useSelector(state => state);
   const image = state?.currentUser?.image;
   const name = state?.currentUser?.name;
   const userEmail = state?.user?.email;
 
-  useEffect(() => {
-    fetch(`http://localhost:8000/images?email=${userEmail}`)
-      .then((res) => res.json())
-      .then((images) => setData(images));
-  }, [userEmail]);
-  console.log("data",data);
 
+  const {data , isLoading , refetch} = useQuery({
+    queryKey :['images' , "email"],
+    queryFn : async ()=>{
+      const res = await  fetch(`http://localhost:8000/images?email=${userEmail}`);
+      const data = await res.json()
+      return data
+    }
+  })
+
+  if(isLoading){
+    return <div>
+    <div className="w-16 mx-auto my-20 h-16 border-4 border-dashed rounded-full animate-spin border-violet-400"></div>
+  </div>
+  }
+
+ 
+
+  const handelclickdelete = (id) => {
+    fetch(`http://localhost:8000/imagede/${id}`, {
+      method: "DELETE",
+      headers: {
+        "content-type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if(data.acknowledged){
+          refetch()
+            return toast.success('Photo Delete Success')
+        }
+      })
+  };
 
   return (
     <div className="text-left m-14">
@@ -25,10 +53,7 @@ const Albums = () => {
         <div className="flex">
           <div className="avatar">
             <div className="w-32 rounded-full">
-              <img
-                src={image}
-                alt="error"
-              />
+              <img src={image} alt="error" />
             </div>
           </div>
           <div className="mx-10">
@@ -60,8 +85,13 @@ const Albums = () => {
           <section className="py-6 ">
             <div className="container flex flex-col justify-center p-4 mx-auto">
               <div className="grid grid-cols-1 relative gap-4 lg:grid-cols-4 sm:grid-cols-2">
-                {data?.map(p => <AllImages key={p._id} img={p}></AllImages>)}
-                
+                {data?.map((p) => (
+                  <AllImages
+                    handelclickdelete={handelclickdelete}
+                    key={p._id}
+                    img={p}
+                  ></AllImages>
+                ))}
               </div>
             </div>
           </section>

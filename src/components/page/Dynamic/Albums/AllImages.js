@@ -6,10 +6,10 @@ import { Link } from "react-router-dom";
 import { toast } from "react-hot-toast";
 
 
-const AllImages = ({img}) => {
-  const {image} =img;
+const AllImages = ({img , handelclickdelete}) => {
+  const {image, _id} =img;
   const url = image;
-  
+
   const handelDownlode = (url) => {
     const atag = document.createElement("a");
     atag.href = url;
@@ -18,6 +18,10 @@ const AllImages = ({img}) => {
     atag.click();
     atag.remove();
   };
+
+
+
+
   return (
     <div>
       <div className="relative my-2">
@@ -25,14 +29,14 @@ const AllImages = ({img}) => {
           <img
             className="object-cover w-full bg-gray-500 aspect-square border-2"
             src={url}
-            alt=""
+            alt="url"
           />
         </div>
         <div className="absolute top-4 right-2">
           <div className=" h-full gap-6 p-1 flex bg-white">
-            <Link className="text-3xl ">
+            <button onClick={()=>{handelclickdelete(_id)}} className="text-3xl ">
               <MdDelete />
-            </Link>
+            </button>
             <button
               onClick={() => {
                 handelDownlode(url);
