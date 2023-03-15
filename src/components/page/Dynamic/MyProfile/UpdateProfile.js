@@ -1,52 +1,67 @@
 import React from 'react';
-import { Link } from "react-router-dom";
-import { FcGoogle } from "react-icons/fc";
 import { toast } from "react-hot-toast";
 import { useForm } from "react-hook-form";
 import { RiImageAddFill } from 'react-icons/ri';
+import { useSelector } from "react-redux";
+import { useNavigate } from 'react-router-dom';
 
 const UpdateProfile = () => {
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm();
+  const data = useSelector((state) => state);
+  const email = data?.currentUser?.email;
+  const { register, handleSubmit, watch } = useForm();
   const imageHostKey = "0a8ef11a7d70acd362278a77fba31d7a";
+  const navigate = useNavigate()
 
   //   fast
   const onSubmit = (data) => {
     const name = data.username;
     const image = data.image[0];
-    console.log(name);
-    
-    // const formData = new FormData();
-    // formData.append("image", image);
-    // fetch(`https://api.imgbb.com/1/upload?key=${imageHostKey}`, {
-    //   method: "POST",
-    //   body: formData,
-    // })
-    //   .then((res) => res.json())
-    //   .then((imageData) => {
-    //     if (imageData.success) {
-    //       const img = imageData.data.url;
-      
+    if (name) {
+      fetch(`http://localhost:8000/username?email=${email}`, {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({name}),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.acknowledged) {
+            navigate('/myProfile')
+            return toast.success(" Update success full !!");
+          }
+        });
+    } else if (image) {
+      const formData = new FormData();
+      formData.append("image", image);
+      fetch(`https://api.imgbb.com/1/upload?key=${imageHostKey}`, {
+        method: "POST",
+        body: formData,
+      })
+        .then((res) => res.json())
+        .then((imageData) => {
+          if (imageData.success) {
+            const img = imageData.data.url;
 
-    // //       fetch("http://localhost:8000/userPost", {
-    // //         method: "POST",
-    // //         headers: {
-    // //           "content-type": "application/json",
-    // //         },
-    // //         body: JSON.stringify(usersinfo),
-    // //       })
-    // //         .then((res) => res.json())
-    // //         .then((data) => {
-    // //           if (data.acknowledged) {
-    // //             return toast.success(" post success full !!");
-    // //           }
-    // //         });
-    //     }
-    //   });
+            fetch(`http://localhost:8000/userPut?email=${email}`, {
+              method: "PUT",
+              headers: {
+                "content-type": "application/json",
+              },
+              body: JSON.stringify({img}),
+            })
+              .then((res) => res.json())
+              .then((data) => {
+                if (data.acknowledged) {
+                  navigate('/myProfile')
+                  return toast.success(" Update success full !!");
+                }
+              });
+          }
+        });
+    } else {
+      return;
+    }
   };
 
   return (
@@ -57,25 +72,25 @@ const UpdateProfile = () => {
         onSubmit={handleSubmit(onSubmit)}
         className="space-y-6 ng-untouched ng-pristine ng-valid"
       >
-         <div className="space-y-1 text-sm">
+        <div className="space-y-1 text-sm">
           <label htmlFor="email" className="text-xl capitalize font-semibold">
             Email <span className="text-red-600">*</span>
           </label>
           <input
-            
             type="text"
             id="email"
+            disabled
+            defaultValue={email}
             placeholder="email"
             className="w-full px-4 py-3 rounded-md border-gray-700 bg-gray-100 text-gray-900 focus:border-blue-400"
           />
-         
         </div>
         <div className="space-y-1 text-sm">
           <label
             htmlFor="username"
             className="text-xl text-left capitalize font-semibold"
           >
-            Username <span className="text-red-600">*</span>
+            Username 
           </label>
           <input
             {...register("username")}
@@ -84,13 +99,12 @@ const UpdateProfile = () => {
             placeholder="Username"
             className="w-full px-4 py-3 rounded-md border-gray-700 bg-gray-100 text-gray-900 focus:border-blue-400"
           />
-          
         </div>
-        {/* img */}
+      
 
         <div className="w-full flex flex-col gap-1">
           <label htmlFor="image" className="text-xl capitalize font-semibold ">
-            Upload Image <span className="text-red-600">*</span>
+            Upload Image 
           </label>
           <label
             htmlFor="image"
@@ -106,18 +120,13 @@ const UpdateProfile = () => {
               {...register("image")}
             />
           </label>
-         
         </div>
-        {/* img */}
-       
-
         
 
         <button className="block w-full p-3 text-center rounded-sm text-gray-900 bg-blue-400">
           Sign Up
         </button>
       </form>
-      
     </div>
   );
 };

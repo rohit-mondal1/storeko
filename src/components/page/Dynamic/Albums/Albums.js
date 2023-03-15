@@ -1,9 +1,16 @@
 import React from "react";
 import { AiOutlineEdit } from "react-icons/ai";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import AllImages from "./AllImages";
 
 const Albums = () => {
+  const data = useSelector(state => state);
+  const image = data?.currentUser?.image;
+  const name = data?.currentUser?.name;
+
+
+
   return (
     <div className="text-left m-14">
       <div>
@@ -11,13 +18,13 @@ const Albums = () => {
           <div className="avatar">
             <div className="w-32 rounded-full">
               <img
-                src="https://i.ibb.co/QnVhN1m/IMG20220618211638.jpg"
+                src={image}
                 alt="error"
               />
             </div>
           </div>
           <div className="mx-10">
-            <h1 className="text-3xl font-bold">Rohit Mondal</h1>
+            <h1 className="text-3xl font-bold">{name}</h1>
             {/* <div>Edit</div> */}
             <div className="text-left  my-1">
               <Link to="/updateProfile">
@@ -40,7 +47,7 @@ const Albums = () => {
       </div>
       {/* my photo */}
       <div className="mt-16">
-        <h1 className="text-2xl my-6">Rohit's Images</h1>
+        <h1 className="text-2xl my-6">{name}'s Images</h1>
         <div>
           <section className="py-6 ">
             <div className="container flex flex-col justify-center p-4 mx-auto">
