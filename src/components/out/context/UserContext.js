@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useState } from "react";
 
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword,  signOut } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword,  signInWithPopup,  signOut } from "firebase/auth";
 import app from "../Auth/Firebase.config";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -11,6 +11,7 @@ import {
 
 export const AuthContext = createContext();
 const auth = getAuth(app);
+const Provider = new GoogleAuthProvider()
 
 
 const UserContext = ({ children }) => {
@@ -35,6 +36,10 @@ const UserContext = ({ children }) => {
     setLoder(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
+  // google auth
+  const google=()=>{
+    return signInWithPopup(auth ,Provider)
+  }
   
 
   useEffect(() => {
@@ -53,7 +58,7 @@ const UserContext = ({ children }) => {
       .then((data) => dispatch(GetUserPayload(data)));
   }, [userEmail , dispatch]);
 
-  const authInfo = { loder, signup, logIn, logOut , auth };
+  const authInfo = { loder, signup, logIn, logOut , auth , google };
   return (
     <div>
       <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>

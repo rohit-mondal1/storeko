@@ -13,7 +13,7 @@ const Home = () => {
             <ProAccound/>
             <div className='my-12 '>
                 <div>
-                    <h1 className='text-3xl font-semibold' >Your Choice</h1>
+                    <h1 className='text-4xl font-semibold leading-tight' >Your Choice</h1>
                 </div>
 
             <SumCompany/>

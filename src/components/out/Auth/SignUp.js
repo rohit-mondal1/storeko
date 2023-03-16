@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { RiImageAddFill } from "react-icons/ri";
 import { useForm } from "react-hook-form";
@@ -10,7 +10,8 @@ import { toast } from 'react-hot-toast';
 
 
 const SignUp = () => {
-  const { signup } = useContext(AuthContext);
+  const { signup, google } = useContext(AuthContext);
+  const navigate = useNavigate()
 
   const {
     register,
@@ -39,7 +40,7 @@ const SignUp = () => {
           const usersinfo = {
             name,
             email,
-            password,
+            type: "Patronal",
             image: img,
           };
 
@@ -56,7 +57,8 @@ const SignUp = () => {
                 .then((res) => res.json())
                 .then((data) => {
                   if (data.acknowledged) {
-                    return toast.success(" post success full !!");
+                    navigate('/')
+                    return toast.success(" Sign Up success full !!");
                   }
                 });
             }
@@ -64,13 +66,45 @@ const SignUp = () => {
         }
       });
   };
+  const handelGoogle = () => {
+    google()
+      .then((res) => {
+        const user = res.user;
+        const useInfo = {
+          name: user?.displayName,
+          email: user?.email,
+          type: "Patronal",
+          image: user?.photoURL,
+        };
+        if (user?.uid) {
+          fetch("http://localhost:8000/postGoogle", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(useInfo),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              
+                navigate('/')
+                return toast.success(" Sign Up success full !!");
+              
+            });
+            navigate('/')
+            return toast.success(" Sign Up success full !!");
+        }
+        console.log("is okk", useInfo);
+      })
+      .catch((e) => console.error(e.message));
+  };
   return (
-    <div className="w-full mx-auto my-5 max-w-md p-8 space-y-3 rounded-xl bg-gray-900 text-gray-100">
+    <div className="w-full mx-auto my-6 max-w-md p-8 space-y-3 rounded-xl bg-gray-900 text-gray-100">
       <h1 className="text-2xl font-bold text-center">Sign up</h1>
 
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="space-y-6 ng-untouched ng-pristine ng-valid"
+        className="space-y-6 text-left ng-untouched ng-pristine ng-valid"
       >
         <div className="space-y-1 text-sm">
           <label
@@ -161,9 +195,9 @@ const SignUp = () => {
       </div>
       <div className="flex justify-center space-x-4">
         <button
-          // onClick={handelgoogle}
+          onClick={handelGoogle}
           aria-label="Log in with Google"
-          className="p-3  text-3xl font-bold rounded-sm"
+          className="p-3  text-4xl font-bold rounded-sm"
         >
           <FcGoogle />
         </button>
