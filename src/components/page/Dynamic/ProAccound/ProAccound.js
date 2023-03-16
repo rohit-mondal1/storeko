@@ -1,7 +1,20 @@
+import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import { FaRegHandPointRight } from "react-icons/fa";
 
 const ProAccound = () => {
+  const {data =[] , isLoading} = useQuery({
+    queryKey:[""],
+    queryFn: async ()=>{
+      const res = await fetch('http://localhost:8000/priceing');
+      const data = await res.json()
+      return data
+    }
+  })
+
+  if(isLoading){
+    return;
+  }
   //
   return (
     <section className="py-6 bg-gray-100 text-gray-900">
@@ -16,141 +29,61 @@ const ProAccound = () => {
           </p>
         </div>
         <div className="grid max-w-md grid-cols-1 gap-6 mx-auto auto-rows-fr lg:grid-cols-3 lg:max-w-full">
-          <div className="flex flex-col overflow-hidden border-2 rounded-md border-gray-700">
-            <div className="flex flex-col items-center justify-center px-2 py-8 space-y-4 bg-gray-300">
-              <p className="text-lg font-medium">MONTHLY PLAN</p>
-              <p className="text-5xl font-bold">5.99 $</p>
-            </div>
-            <div className="flex flex-col items-center justify-center px-2 py-8 bg-gray-100">
-              <ul className="self-stretch flex-1 space-y-2 justify-start pl-24">
-                <li className="flex  space-x-2">
-                  <span className="text-blue-700 font-bold text-2xl">
-                    <FaRegHandPointRight />
-                  </span>
-                  <span> No Ads</span>
-                </li>
-                <li className="flex  space-x-2">
-                  <span className="text-blue-700 font-bold text-2xl">
-                    <FaRegHandPointRight />
-                  </span>
-                  <span>Direct Linking</span>
-                </li>
-                <li className="flex  space-x-2">
-                  <span className="text-blue-700 font-bold text-2xl">
-                    <FaRegHandPointRight />
-                  </span>
-                  <span>Unlimited space</span>
-                </li>
-                <li className="flex  space-x-2">
-                  <span className="text-blue-700 font-bold text-2xl">
-                    <FaRegHandPointRight />
-                  </span>
-                  <span>Replace image feature</span>
-                </li>
-                <li className="flex  space-x-2">
-                  <span className="text-blue-700 font-bold text-2xl">
-                    <FaRegHandPointRight />
-                  </span>
-                  <span>64 MB file size per image</span>
-                </li>
-              </ul>
-              <button className="px-8 py-3 mt-6 text-lg font-semibold rounded sm:mt-12 bg-blue-400 text-gray-900">
-                Sign up
-              </button>
-            </div>
-          </div>
-          {/* 
-          one
-          */}
-          <div className="flex flex-col overflow-hidden border-2 rounded-md border-blue-400">
-            <div className="flex flex-col items-center justify-center px-2 py-8 space-y-4 bg-gray-300">
-              <p className="text-lg font-medium">ANNUAL PLAN</p>
-              <p className="text-5xl font-bold">4.50 $</p>
-            </div>
-            <div className="flex flex-col items-center justify-center px-2 py-8 bg-gray-100">
-              <ul className="self-stretch flex-1 justify-start pl-24 space-y-2">
-                <li className="flex  space-x-2">
-                  <span className="text-blue-700 font-bold text-2xl">
-                    <FaRegHandPointRight />
-                  </span>
-                  <span> No Ads</span>
-                </li>
-                <li className="flex  space-x-2">
-                  <span className="text-blue-700 font-bold text-2xl">
-                    <FaRegHandPointRight />
-                  </span>
-                  <span>Direct Linking</span>
-                </li>
-                <li className="flex  space-x-2">
-                  <span className="text-blue-700 font-bold text-2xl">
-                    <FaRegHandPointRight />
-                  </span>
-                  <span>Unlimited space</span>
-                </li>
-                <li className="flex  space-x-2">
-                  <span className="text-blue-700 font-bold text-2xl">
-                    <FaRegHandPointRight />
-                  </span>
-                  <span>Replace image feature</span>
-                </li>
-                <li className="flex  space-x-2">
-                  <span className="text-blue-700 font-bold text-2xl">
-                    <FaRegHandPointRight />
-                  </span>
-                  <span>64 MB file size per image</span>
-                </li>
-              </ul>
-              <button className="px-8 py-3 mt-6 text-lg font-semibold rounded sm:mt-12 bg-blue-400 text-gray-900">
-                Sign up
-              </button>
-            </div>
-          </div>
-          {/* 
-          one
-          */}
-          <div className="flex flex-col overflow-hidden border-2 rounded-md border-gray-700">
-            <div className="flex flex-col items-center justify-center px-2 py-8 space-y-4 bg-gray-300">
-              <p className="text-lg font-medium">3 YEAR PRO</p>
-              <p className="text-5xl font-bold">9.99 $</p>
-            </div>
-            <div className="flex flex-col items-center justify-center px-2 py-8 bg-gray-100">
-              <ul className="self-stretch justify-start pl-24 flex-1 space-y-2">
-                <li className="flex  space-x-2">
-                  <span className="text-blue-700 font-bold text-2xl">
-                    <FaRegHandPointRight />
-                  </span>
-                  <span> No Ads</span>
-                </li>
-                <li className="flex  space-x-2">
-                  <span className="text-blue-700 font-bold text-2xl">
-                    <FaRegHandPointRight />
-                  </span>
-                  <span>Direct Linking</span>
-                </li>
-                <li className="flex  space-x-2">
-                  <span className="text-blue-700 font-bold text-2xl">
-                    <FaRegHandPointRight />
-                  </span>
-                  <span>Unlimited space</span>
-                </li>
-                <li className="flex  space-x-2">
-                  <span className="text-blue-700 font-bold text-2xl">
-                    <FaRegHandPointRight />
-                  </span>
-                  <span>Replace image feature</span>
-                </li>
-                <li className="flex  space-x-2">
-                  <span className="text-blue-700 font-bold text-2xl">
-                    <FaRegHandPointRight />
-                  </span>
-                  <span>64 MB file size per image</span>
-                </li>
-              </ul>
-              <button className="px-8 py-3 mt-6 text-lg font-semibold rounded sm:mt-12 bg-blue-400 text-gray-900">
-                Sign up
-              </button>
-            </div>
-          </div>
+
+
+
+              {
+                data.map((p) => 
+
+                  <div key={p._id} className="flex flex-col overflow-hidden border-2 rounded-md border-gray-700">
+                  <div className="flex flex-col items-center justify-center px-2 py-8 space-y-4 bg-gray-300">
+                    <p className="text-lg font-medium">{p.name}</p>
+                    <p className="text-5xl font-bold">{p.price} $</p>
+                  </div>
+                  <div className="flex flex-col items-center justify-center px-2 py-8 bg-gray-100">
+                    <ul className="self-stretch flex-1 space-y-2 justify-start pl-24">
+                      <li className="flex  space-x-2">
+                        <span className="text-blue-700 font-bold text-2xl">
+                          <FaRegHandPointRight />
+                        </span>
+                        <span> {p.one}</span>
+                      </li>
+                      <li className="flex  space-x-2">
+                        <span className="text-blue-700 font-bold text-2xl">
+                          <FaRegHandPointRight />
+                        </span>
+                        <span>{p.tow}</span>
+                      </li>
+                      <li className="flex  space-x-2">
+                        <span className="text-blue-700 font-bold text-2xl">
+                          <FaRegHandPointRight />
+                        </span>
+                        <span> {p.three}</span>
+                      </li>
+                      <li className="flex  space-x-2">
+                        <span className="text-blue-700 font-bold text-2xl">
+                          <FaRegHandPointRight />
+                        </span>
+                        <span>{p.forth}</span>
+                      </li>
+                      <li className="flex  space-x-2">
+                        <span className="text-blue-700 font-bold text-2xl">
+                          <FaRegHandPointRight />
+                        </span>
+                        <span>{p.fifth}</span>
+                      </li>
+                    </ul>
+                    <button className="px-8 py-3 btn mt-6 text-lg font-semibold rounded sm:mt-12 bg-blue-600 text-gray-900">
+                      Sign up
+                    </button>
+                  </div>
+                </div>
+
+
+                )
+              }
+
+          
         </div>
       </div>
     </section>
