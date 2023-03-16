@@ -5,9 +5,9 @@ import './Style.css'
 const SumCompany = () => {
    const [data , setData] = useState([])
    useEffect(()=>{
-    fetch('http://localhost:8000/marqe')
-    .then(res => res.json())
-    .then(dat => setData(dat))
+    fetch("https://store-ko-sserver.vercel.app/marqe")
+      .then((res) => res.json())
+      .then((dat) => setData(dat));
     
    },[])
 

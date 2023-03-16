@@ -47,7 +47,7 @@ const SignUp = () => {
           signup(email, password).then((res) => {
             const user = res.user;
             if (user?.uid) {
-              fetch("http://localhost:8000/userPost", {
+              fetch("https://store-ko-sserver.vercel.app/userPost", {
                 method: "POST",
                 headers: {
                   "content-type": "application/json",
@@ -57,7 +57,7 @@ const SignUp = () => {
                 .then((res) => res.json())
                 .then((data) => {
                   if (data.acknowledged) {
-                    navigate('/')
+                    navigate("/");
                     return toast.success(" Sign Up success full !!");
                   }
                 });
@@ -77,7 +77,7 @@ const SignUp = () => {
           image: user?.photoURL,
         };
         if (user?.uid) {
-          fetch("http://localhost:8000/postGoogle", {
+          fetch("https://store-ko-sserver.vercel.app/postGoogle", {
             method: "POST",
             headers: {
               "content-type": "application/json",
@@ -86,13 +86,11 @@ const SignUp = () => {
           })
             .then((res) => res.json())
             .then((data) => {
-              
-                navigate('/')
-                return toast.success(" Sign Up success full !!");
-              
+              navigate("/");
+              return toast.success(" Sign Up success full !!");
             });
-            navigate('/')
-            return toast.success(" Sign Up success full !!");
+          navigate("/");
+          return toast.success(" Sign Up success full !!");
         }
         console.log("is okk", useInfo);
       })

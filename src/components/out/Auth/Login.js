@@ -39,7 +39,7 @@ const Login = () => {
           image: user?.photoURL,
         };
         if (user?.uid) {
-          fetch("http://localhost:8000/postGoogle", {
+          fetch("https://store-ko-sserver.vercel.app/postGoogle", {
             method: "POST",
             headers: {
               "content-type": "application/json",

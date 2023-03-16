@@ -37,7 +37,7 @@ const UplodeImage = () => {
           };
           setModaldata(img)
 
-          fetch(`http://localhost:8000/postImage`, {
+          fetch(`https://store-ko-sserver.vercel.app/postImage`, {
             method: "POST",
             headers: {
               "content-type": "application/json",
@@ -48,7 +48,7 @@ const UplodeImage = () => {
             .then((data) => {
               if (data.acknowledged) {
                 setModal(true);
-                e.target.reset()
+                e.target.reset();
                 return toast.success(" post success full !!");
               }
             });

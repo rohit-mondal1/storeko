@@ -17,7 +17,7 @@ const UpdateProfile = () => {
     const name = data.username;
     const image = data.image[0];
     if (name) {
-      fetch(`http://localhost:8000/username?email=${email}`, {
+      fetch(`https://store-ko-sserver.vercel.app/username?email=${email}`, {
         method: "PUT",
         headers: {
           "content-type": "application/json",
@@ -43,7 +43,7 @@ const UpdateProfile = () => {
           if (imageData.success) {
             const img = imageData.data.url;
 
-            fetch(`http://localhost:8000/userPut?email=${email}`, {
+            fetch(`https://store-ko-sserver.vercel.app/userPut?email=${email}`, {
               method: "PUT",
               headers: {
                 "content-type": "application/json",

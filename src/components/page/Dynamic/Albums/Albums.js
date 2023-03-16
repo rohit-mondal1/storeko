@@ -14,25 +14,27 @@ const Albums = () => {
   const userEmail = state?.user?.email;
 
 
-  const {data , isLoading , refetch} = useQuery({
-    queryKey :['images' , "email"],
-    queryFn : async ()=>{
-      const res = await  fetch(`http://localhost:8000/images?email=${userEmail}`);
-      const data = await res.json()
-      return data
-    }
-  })
+  const { data, isLoading, refetch } = useQuery({
+    queryKey: ["images", "email"],
+    queryFn: async () => {
+      const res = await fetch(
+        `https://store-ko-sserver.vercel.app/images?email=${userEmail}`
+      );
+      const data = await res.json();
+      return data;
+    },
+  });
 
-  if(isLoading){
-    return <div>
-    <div className="w-16 mx-auto my-20 h-16 border-4 border-dashed rounded-full animate-spin border-violet-400"></div>
-  </div>
+  if (isLoading) {
+    return (
+      <div>
+        <div className="w-16 mx-auto my-20 h-16 border-4 border-dashed rounded-full animate-spin border-violet-400"></div>
+      </div>
+    );
   }
 
- 
-
   const handelclickdelete = (id) => {
-    fetch(`http://localhost:8000/imagede/${id}`, {
+    fetch(`https://store-ko-sserver.vercel.app/imagede/${id}`, {
       method: "DELETE",
       headers: {
         "content-type": "application/json",
@@ -40,11 +42,11 @@ const Albums = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        if(data.acknowledged){
-          refetch()
-            return toast.success('Photo Delete Success')
+        if (data.acknowledged) {
+          refetch();
+          return toast.success("Photo Delete Success");
         }
-      })
+      });
   };
 
   return (
@@ -96,6 +98,7 @@ const Albums = () => {
             </div>
           </section>
         </div>
+        {data.length === 0 && <h1 className="text-3xl text-center text-red-800 ">No Data ....? </h1>}
       </div>
     </div>
   );

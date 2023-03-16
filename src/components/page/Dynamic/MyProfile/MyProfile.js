@@ -8,6 +8,7 @@ const MyProfile = () => {
   const image = data?.currentUser?.image;
   const name = data?.currentUser?.name;
   const email = data?.currentUser?.email;
+  const type = data?.currentUser?.type;
 
   return (
     <div>
@@ -32,7 +33,7 @@ const MyProfile = () => {
           <div className="flex justify-center pt-2 space-x-4 align-center">
             <div className="mx-10">
               <h1 className="font-bold">
-                <span>Type :</span> normal
+                <span>Type :</span> {type}
               </h1>
 
               <div className="flex gap-3 mt-3">

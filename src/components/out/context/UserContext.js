@@ -53,7 +53,7 @@ const UserContext = ({ children }) => {
   }, [dispatch]);
 
   useEffect(() => {
-    fetch(`http://localhost:8000/user?email=${userEmail}`)
+    fetch(`https://store-ko-sserver.vercel.app/user?email=${userEmail}`)
       .then((res) => res.json())
       .then((data) => dispatch(GetUserPayload(data)));
   }, [userEmail , dispatch]);
