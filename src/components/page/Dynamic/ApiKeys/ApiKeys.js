@@ -44,9 +44,9 @@ const ApiKeys = () => {
         
           className="w-full  border-2 p-2 border-black my-3"
           type="text"
-          defaultValue={copyText}
+          defaultValue={copyApi}
           disabled
-          value={copyText}
+          value={copyApi}
         />
         <button
         id="button"

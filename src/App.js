@@ -2,12 +2,11 @@ import './App.css';
 import { RouterProvider } from 'react-router-dom';
 import { router } from './components/out/router/MainRouter';
 import { Toaster } from 'react-hot-toast';
-import { Provider } from 'react-redux';
-import store from './components/Redux/Store';
+
 
 function App() {
   return (
-    <div className="App">
+    <div className="App max-w-[1450px] mx-auto ">
       
      <RouterProvider router={router}></RouterProvider>
      <Toaster/>

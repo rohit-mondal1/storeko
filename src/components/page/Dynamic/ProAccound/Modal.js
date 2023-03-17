@@ -4,7 +4,7 @@ import { toast } from "react-hot-toast";
 import { useSelector } from "react-redux";
 
 const Modal = ({ modal, setModal }) => {
-  console.log(modal);
+
 
   const state = useSelector((state) => state);
   const id = state?.currentUser?._id;
@@ -15,7 +15,7 @@ const Modal = ({ modal, setModal }) => {
   // fetch
   const [clientSecret, setClientSecret] = useState("");
   useEffect(() => {
-    // Create PaymentIntent as soon as the page loads
+
     fetch("https://store-ko-sserver.vercel.app/create-payment-intent", {
       method: "POST",
       headers: { "Content-Type": "application/json" },

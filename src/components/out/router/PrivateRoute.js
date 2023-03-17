@@ -13,7 +13,7 @@ const PrivateRoute = ({ children }) => {
     </div>
   }
 
-  if (user.uid) {
+  if (user?.uid) {
     return children;
   }
   return <Navigate to="/login"></Navigate>;

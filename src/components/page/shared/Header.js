@@ -6,9 +6,15 @@ import { AuthContext } from "../../out/context/UserContext";
 import { toast } from "react-hot-toast";
 import { useSelector } from "react-redux";
 import { signOut } from "firebase/auth";
+import { AiOutlineHome } from "react-icons/ai";
+import { SiAmazonapigateway } from "react-icons/si";
+import { CgProfile } from "react-icons/cg";
+import { BiPhotoAlbum } from "react-icons/bi";
+import { FiLogOut } from "react-icons/fi";
+
 
 const Header = () => {
-  const {logOut , auth} = useContext(AuthContext)
+  const { auth} = useContext(AuthContext)
   const navigate = useNavigate()
   const data = useSelector(state => state);
   const image = data?.currentUser?.image
@@ -35,7 +41,7 @@ const Header = () => {
         </Link>
       </div>
       {/* about */}
-      <div className="navbar-end hidden lg:flex">
+      <div className="navbar-end ">
         <ul className="menu menu-horizontal p-0 text-xl font-semibold ">
           <li>
             <Link to="/uplde-image">
@@ -60,11 +66,23 @@ const Header = () => {
             className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <Link to="/home">Home</Link>
+              <Link to="/home"><AiOutlineHome/> Home</Link>
             </li>
             <li>
-              <button onClick={handelLogout}>LogI Out</button>
-            </li>
+                <Link to='/api-keys'><SiAmazonapigateway/> API Keys</Link>
+              </li>
+              <li>
+                <Link to="/myProfile">
+                  <CgProfile/>
+                   My Profile</Link>
+              </li>
+              <li>
+              <Link to="/albums"><BiPhotoAlbum/> Albums</Link>
+              </li>
+              <li>
+              
+              <button onClick={handelLogout}><FiLogOut/> LogI Out</button>
+              </li>
           </ul>
         </div>
       </div>
@@ -86,7 +104,7 @@ const Header = () => {
             </Link>
             <ul className="menu bg-base-100 w-56  shadow-xl">
               <li>
-                <Link to='/api-keys'>API Keys</Link>
+              <Link to='/api-keys'><SiAmazonapigateway/> API Keys</Link>
               </li>
             </ul>
           </li>
@@ -118,13 +136,13 @@ const Header = () => {
             </Link>
             <ul className="menu bg-base-100 w-56  shadow-2xl">
               <li>
-                <Link to="/myProfile">My Profile</Link>
+                <Link to="/myProfile"> <CgProfile/> My Profile</Link>
               </li>
               <li>
-                <Link to="/albums">Albums</Link>
+                <Link to="/albums"><BiPhotoAlbum/> Albums</Link>
               </li>
               <li>
-              <button onClick={handelLogout}>LogI Out</button>
+              <button onClick={handelLogout}> <FiLogOut/> LogI Out</button>
               </li>
             </ul>
           </li>

@@ -101,12 +101,14 @@ const ProAccound = () => {
           </div>
         </div>
       </section>
-      <div className="absolute top-10 left-1/3 right-1/3 z-50 bg-slate-400">
+      <div className=" mx-auto max-w-[430px]  bg-slate-400">
+      <div className=" absolute max-w-[430px] top-80  z-50 bg-slate-400">
         {modals && (
           <Elements stripe={stripePromise}>
             <Modal modal={modals} setModal={setModal}></Modal>
           </Elements>
         )}
+      </div>
       </div>
     </div>
   );
