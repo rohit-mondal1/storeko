@@ -59,14 +59,14 @@ const Login = () => {
       .catch((e) => console.error(e.message));
   };
   return (
-    <div className="w-full mx-auto my-6 max-w-md p-8 space-y-3 rounded-xl dark:bg-gray-900 dark:text-gray-100">
+    <div className="w-full mx-auto my-6 max-w-md p-8 space-y-3 rounded-xl bg-gray-900 text-gray-100">
       <h1 className="text-2xl font-bold text-center">Log in</h1>
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="space-y-6 text-left ng-untouched ng-pristine ng-valid"
       >
         <div className="space-y-1 text-sm">
-          <label htmlFor="email" className="block dark:text-gray-400">
+          <label htmlFor="email" className="block text-gray-400">
             Email
           </label>
           <input
@@ -75,11 +75,11 @@ const Login = () => {
             required
             id="email"
             placeholder="email"
-            className="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-100 dark:text-gray-900 focus:dark:border-blue-400"
+            className="w-full px-4 py-3 rounded-md border-gray-700 bg-gray-100 text-gray-900 focus:border-blue-400"
           />
         </div>
         <div className="space-y-1 text-sm">
-          <label htmlFor="password" className="block dark:text-gray-400">
+          <label htmlFor="password" className="block text-gray-400">
             Password
           </label>
           <input
@@ -87,13 +87,13 @@ const Login = () => {
             type="password"
             id="password"
             placeholder="Password"
-            className="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-100 dark:text-gray-900 focus:dark:border-blue-400"
+            className="w-full px-4 py-3 rounded-md border-gray-700 bg-gray-100 text-gray-900 focus:border-blue-400"
           />
           {errors.password && (
             <p className="text-red-400 "> {errors.password.message}</p>
           )}
         </div>
-        <button className="block w-full p-3 text-center rounded-sm dark:text-gray-900 dark:bg-blue-400">
+        <button className="block w-full p-3 text-center rounded-sm text-gray-900 bg-blue-400">
           Sign up
         </button>
       </form>
@@ -112,13 +112,13 @@ const Login = () => {
         </button>
       </div>
 
-      <p className="text-xs text-center sm:px-6 dark:text-gray-400">
+      <p className="text-xs text-center sm:px-6 text-gray-400">
         Don't have an account?
         <Link
           to="/signup"
           rel="noopener noreferrer"
           href="#"
-          className="underline dark:text-gray-100"
+          className="underline text-gray-100"
         >
           Sign up
         </Link>
