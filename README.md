@@ -18,4 +18,4 @@
 
 6. By going to albums, we can see our posted photos and delete them.
 
-7. We can upgrade our profile by coming to the upgrade section .
+7. We can upgrade our profile by coming to the upgrade section . 
